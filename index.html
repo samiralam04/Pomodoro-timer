@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FocusFlow | Pomodoro Timer</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <div class="logo">
+          <div class="logo-icon">
+            <i
+              class="fas fa-clock animate__animated animate__pulse animate__infinite"
+            ></i>
+          </div>
+          <span>FocusFlow</span>
+        </div>
+        <button
+          class="theme-toggle"
+          id="theme-toggle"
+          aria-label="Toggle theme"
+        >
+          <i class="fas fa-moon"></i>
+        </button>
+      </header>
+
+      <div class="timer-container">
+        <div class="timer-header">
+          <button class="timer-tab active" data-mode="pomodoro">
+            <i class="fas fa-seedling"></i>
+            <span>Focus</span>
+          </button>
+          <button class="timer-tab" data-mode="short-break">
+            <i class="fas fa-coffee"></i>
+            <span>Short Break</span>
+          </button>
+          <button class="timer-tab" data-mode="long-break">
+            <i class="fas fa-umbrella-beach"></i>
+            <span>Long Break</span>
+          </button>
+        </div>
+
+        <div class="timer-display">
+          <svg class="timer-circle" viewBox="0 0 100 100">
+            <circle class="circle-bg" r="45" cx="50" cy="50" />
+            <circle
+              class="circle-progress"
+              id="progress-circle"
+              r="45"
+              cx="50"
+              cy="50"
+            />
+          </svg>
+          <div class="time" id="time-display">25:00</div>
+        </div>
+
+        <div class="timer-state" id="timer-state">
+          <i class="fas fa-hourglass-start"></i>
+          <span>Ready to Focus</span>
+        </div>
+
+        <div class="timer-controls">
+          <button class="control-btn primary" id="start-stop">
+            <i class="fas fa-play"></i>
+            <span>Start</span>
+          </button>
+          <button class="control-btn secondary" id="reset">
+            <i class="fas fa-redo"></i>
+            <span>Reset</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="settings-container">
+        <h3 class="settings-title">
+          <i class="fas fa-cog fa-spin" style="--fa-animation-duration: 5s"></i>
+          <span>Timer Settings</span>
+        </h3>
+        <div class="settings-grid">
+          <div class="setting-group">
+            <label class="setting-label" for="focus-minutes">
+              <i class="fas fa-brain"></i> Focus Duration
+            </label>
+            <input
+              type="number"
+              class="setting-input"
+              id="focus-minutes"
+              min="1"
+              max="60"
+              value="25"
+            />
+          </div>
+          <div class="setting-group">
+            <label class="setting-label" for="short-break-minutes">
+              <i class="fas fa-coffee"></i> Short Break
+            </label>
+            <input
+              type="number"
+              class="setting-input"
+              id="short-break-minutes"
+              min="1"
+              max="30"
+              value="5"
+            />
+          </div>
+          <div class="setting-group">
+            <label class="setting-label" for="long-break-minutes">
+              <i class="fas fa-umbrella-beach"></i> Long Break
+            </label>
+            <input
+              type="number"
+              class="setting-input"
+              id="long-break-minutes"
+              min="1"
+              max="60"
+              value="15"
+            />
+          </div>
+          <div class="setting-group">
+            <label class="setting-label" for="long-break-interval">
+              <i class="fas fa-history"></i> Long Break Interval
+            </label>
+            <input
+              type="number"
+              class="setting-input"
+              id="long-break-interval"
+              min="1"
+              max="10"
+              value="4"
+            />
+          </div>
+        </div>
+        <div class="checkbox-group">
+          <input
+            type="checkbox"
+            class="checkbox-input"
+            id="auto-start"
+            checked
+          />
+          <label class="checkbox-label" for="auto-start">
+            <i class="fas fa-sync-alt"></i> Auto-start next session
+          </label>
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" class="checkbox-input" id="mute-toggle" />
+          <label class="checkbox-label" for="mute-toggle">
+            <i class="fas fa-volume-mute"></i> Mute sounds
+          </label>
+        </div>
+        <button
+          class="control-btn secondary"
+          id="toggle-tasks"
+          style="width: 100%; margin-top: 1rem"
+        >
+          <i class="fas fa-tasks"></i>
+          <span>Show Task List</span>
+        </button>
+      </div>
+
+      <div class="task-list" id="task-list">
+        <div class="task-input">
+          <input type="text" id="new-task" placeholder="Add a new task..." />
+          <button id="add-task">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <ul class="tasks" id="tasks"></ul>
+      </div>
+
+      <div class="stats-container">
+        <h3 class="stats-title">
+          <i
+            class="fas fa-chart-line animate__animated animate__pulse animate__infinite"
+          ></i>
+          <span>Today's Stats</span>
+        </h3>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-value" id="session-count">0</div>
+            <div class="stat-label">Sessions</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="focused-minutes">0</div>
+            <div class="stat-label">Minutes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="daily-streak">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote-container animate__animated animate__fadeIn">
+        <div class="quote-text" id="quote-text">
+          "The key is not to prioritize what's on your schedule, but to schedule
+          your priorities."
+        </div>
+        <div class="quote-author" id="quote-author">— Stephen Covey</div>
+      </div>
+
+      <div class="notification" id="notification">
+        <i class="fas fa-bell notification-icon"></i>
+        <span class="notification-message">Timer completed!</span>
+      </div>
+
+      <div
+        class="water-reminder animate__animated animate__pulse animate__infinite"
+        id="water-reminder"
+        title="Stay hydrated!"
+      >
+        <i class="fas fa-tint"></i>
+      </div>
+    </div>
+
+    <audio
+      id="alarm-sound"
+      src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="click-sound"
+      src="https://assets.mixkit.co/sfx/preview/mixkit-modern-click-box-check-1120.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="tick-sound"
+      src="https://assets.mixkit.co/sfx/preview/mixkit-clock-countdown-bleeps-916.mp3"
+      preload="auto"
+      loop
+    ></audio>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
