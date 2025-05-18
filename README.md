@@ -27,7 +27,7 @@ Turn your browser into a focussed workspace where you can plan your day, track t
 > **Live Preview:** [FocusFlow on GitHub Pages](https://samiralam04.github.io/Pomodoro-timer/)
 
 
-![FocusFlow Screenshot](focus-flow.jpeg)
+![FocusFlow Screenshot](Focus-Flow.png)
 
 ---
 
