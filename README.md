@@ -75,6 +75,15 @@ Edit default values in **`index.html` → Settings Container**:
 <input id="long‑break‑minutes" value="15" />
 ```
 
+---
+
+## 🔈 Audio Credits
+
+* Alarm, click & tick sounds from **[Mixkit](https://mixkit.co/)** (free licence)
+* Ambient tracks likewise from Mixkit – see individual file headers for links
+
+---
+
 ## 🙌 Contributing
 
 Pull requests are welcome!  For major changes please open an issue first to discuss what you would like to change.
