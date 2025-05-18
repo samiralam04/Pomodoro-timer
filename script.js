@@ -673,44 +673,44 @@ document.addEventListener('DOMContentLoaded', () => {
         author: "Tim Ferriss"
       },
       {
-        "text": "You will never find time for anything. If you want time, you must make it.",
-        "author": "Charles Buxton"
+        text: "You will never find time for anything. If you want time, you must make it.",
+        author: "Charles Buxton"
       },
       {
-        "text": "What gets scheduled gets done.",
-        "author": "Michael Hyatt"
+        text: "What gets scheduled gets done.",
+        author: "Michael Hyatt"
       },
       {
-        "text": "Don’t be busy. Be productive.",
-        "author": "Unknown"
+        text: "Don’t be busy. Be productive.",
+        author: "Unknown"
       },
       {
-        "text": "Ordinary people think merely of spending time; great people think of using it.",
-        "author": "Arthur Schopenhauer"
+        text: "Ordinary people think merely of spending time; great people think of using it.",
+        author: "Arthur Schopenhauer"
       },
       {
-        "text": "The bad news is time flies. The good news is you’re the pilot.",
-        "author": "Michael Altshuler"
+        text: "The bad news is time flies. The good news is you’re the pilot.",
+        author: "Michael Altshuler"
       },
       {
-        "text": "Either you run the day, or the day runs you.",
-        "author": "Jim Rohn"
+        text: "Either you run the day, or the day runs you.",
+        author: "Jim Rohn"
       },
       {
-        "text": "A goal without a plan is just a wish.",
-        "author": "Antoine de Saint‑Exupéry"
+        text: "A goal without a plan is just a wish.",
+        author: "Antoine de Saint‑Exupéry"
       },
       {
-        "text": "Focus on being productive instead of busy.",
-        "author": "Tim Ferriss"
+        text: "Focus on being productive instead of busy.",
+        author: "Tim Ferriss"
       },
       {
-        "text": "The future depends on what you do today.",
-        "author": "Mahatma Gandhi"
+        text: "The future depends on what you do today.",
+        author: "Mahatma Gandhi"
       },
       {
-        "text": "Success is the sum of small efforts repeated day in and day out.",
-        "author": "Robert Collier"
+        text: "Success is the sum of small efforts repeated day in and day out.",
+        author: "Robert Collier"
       }
     ];
     
