@@ -1,6 +1,5 @@
 # FocusFlow – Pomodoro Timer & Productivity Suite
 
-![FocusFlow Banner](banner.png)
 
 FocusFlow is an all‑in‑one **Pomodoro timer**, daily planner, habit tracker, productivity analytics dashboard, and social accountability hub – built with plain **HTML, CSS, and vanilla JavaScript**.
 Turn your browser into a focussed workspace where you can plan your day, track tasks & habits, visualise your progress, and stay on track with calming focus sounds.
