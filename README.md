@@ -25,10 +25,10 @@ Turn your browser into a focussed workspace where you can plan your day, track t
 
 ## 🚀 Demo
 
-> **Live Preview:** [FocusFlow on GitHub Pages](https://your‑username.github.io/focusflow/)
-> *(Replace the link with your deployed URL)*
+> **Live Preview:** [FocusFlow on GitHub Pages](https://samiralam04.github.io/Pomodoro-timer/)
 
-![FocusFlow Screenshot](screenshot.png)
+
+![FocusFlow Screenshot](focus-flow.jpeg)
 
 ---
 
