@@ -12,6 +12,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -25,13 +29,31 @@
           </div>
           <span>FocusFlow</span>
         </div>
-        <button
-          class="theme-toggle"
-          id="theme-toggle"
-          aria-label="Toggle theme"
-        >
-          <i class="fas fa-moon"></i>
-        </button>
+        <div class="header-actions">
+          <button class="header-btn" id="toggle-tasks" aria-label="Tasks">
+            <i class="fas fa-tasks"></i>
+          </button>
+          <button class="header-btn" id="toggle-planner" aria-label="Planner">
+            <i class="fas fa-calendar-alt"></i>
+          </button>
+          <button class="header-btn" id="toggle-habits" aria-label="Habits">
+            <i class="fas fa-check-circle"></i>
+          </button>
+          <button
+            class="header-btn"
+            id="toggle-social"
+            aria-label="Accountability"
+          >
+            <i class="fas fa-users"></i>
+          </button>
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle theme"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
       </header>
 
       <div class="timer-container">
@@ -157,14 +179,6 @@
             <i class="fas fa-volume-mute"></i> Mute sounds
           </label>
         </div>
-        <button
-          class="control-btn secondary"
-          id="toggle-tasks"
-          style="width: 100%; margin-top: 1rem"
-        >
-          <i class="fas fa-tasks"></i>
-          <span>Show Task List</span>
-        </button>
       </div>
 
       <div class="task-list" id="task-list">
@@ -175,6 +189,168 @@
           </button>
         </div>
         <ul class="tasks" id="tasks"></ul>
+      </div>
+
+      <div class="planner-container">
+        <h3 class="planner-title">
+          <i class="fas fa-calendar-alt"></i>
+          <span>Daily Planner</span>
+        </h3>
+
+        <div class="planner-header">
+          <button id="prev-day"><i class="fas fa-chevron-left"></i></button>
+          <h4 id="planner-date">Today</h4>
+          <button id="next-day"><i class="fas fa-chevron-right"></i></button>
+        </div>
+
+        <div class="time-slots" id="time-slots"></div>
+
+        <button
+          class="control-btn primary"
+          id="add-session"
+          style="width: 100%; margin-top: 1rem"
+        >
+          <i class="fas fa-plus"></i>
+          <span>Add Scheduled Session</span>
+        </button>
+      </div>
+
+      <div class="habits-container">
+        <h3 class="habits-title">
+          <i class="fas fa-check-circle"></i>
+          <span>Daily Habits</span>
+        </h3>
+
+        <div class="habits-list" id="habits-list"></div>
+
+        <div class="habit-input">
+          <input type="text" id="new-habit" placeholder="Add a new habit..." />
+          <button id="add-habit">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="analytics-container">
+        <h3 class="analytics-title">
+          <i class="fas fa-chart-pie"></i>
+          <span>Productivity Analytics</span>
+        </h3>
+
+        <div class="analytics-tabs">
+          <button class="analytics-tab active" data-period="daily">
+            Daily
+          </button>
+          <button class="analytics-tab" data-period="weekly">Weekly</button>
+          <button class="analytics-tab" data-period="monthly">Monthly</button>
+        </div>
+
+        <div class="analytics-content">
+          <div class="chart-container">
+            <canvas id="productivityChart"></canvas>
+          </div>
+
+          <div class="analytics-stats">
+            <div class="analytics-stat">
+              <div class="stat-value" id="avg-focus">0</div>
+              <div class="stat-label">Avg Focus</div>
+            </div>
+            <div class="analytics-stat">
+              <div class="stat-value" id="best-day">None</div>
+              <div class="stat-label">Best Day</div>
+            </div>
+            <div class="analytics-stat">
+              <div class="stat-value" id="completion-rate">0%</div>
+              <div class="stat-label">Completion</div>
+            </div>
+          </div>
+
+          <div class="insights-container">
+            <h4><i class="fas fa-lightbulb"></i> Insights</h4>
+            <div class="insights" id="insights">
+              <p>Complete a few sessions to get personalized insights!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="achievements-container">
+        <h3 class="achievements-title">
+          <i class="fas fa-trophy"></i>
+          <span>Achievements</span>
+        </h3>
+
+        <div class="achievements-grid" id="achievements-grid"></div>
+      </div>
+
+      <div class="music-player">
+        <h3 class="music-title">
+          <i class="fas fa-music"></i>
+          <span>Focus Sounds</span>
+        </h3>
+
+        <div class="music-controls">
+          <button class="music-btn" data-sound="rain">
+            <i class="fas fa-cloud-rain"></i>
+            <span>Rain</span>
+          </button>
+          <button class="music-btn" data-sound="forest">
+            <i class="fas fa-tree"></i>
+            <span>Forest</span>
+          </button>
+          <button class="music-btn" data-sound="coffee">
+            <i class="fas fa-coffee"></i>
+            <span>Café</span>
+          </button>
+          <button class="music-btn" data-sound="waves">
+            <i class="fas fa-water"></i>
+            <span>Waves</span>
+          </button>
+        </div>
+
+        <div class="volume-control">
+          <i class="fas fa-volume-down"></i>
+          <input
+            type="range"
+            id="volume-slider"
+            min="0"
+            max="1"
+            step="0.1"
+            value="0.5"
+          />
+          <i class="fas fa-volume-up"></i>
+        </div>
+      </div>
+
+      <div class="social-container">
+        <h3 class="social-title">
+          <i class="fas fa-users"></i>
+          <span>Accountability</span>
+        </h3>
+
+        <div class="social-content">
+          <div class="share-box">
+            <textarea
+              id="share-message"
+              placeholder="Share your progress..."
+            ></textarea>
+            <button class="control-btn primary" id="share-button">
+              <i class="fas fa-share"></i>
+              <span>Share</span>
+            </button>
+          </div>
+
+          <div class="accountability-partners">
+            <h4>
+              <i class="fas fa-user-friends"></i> Your Accountability Partners
+            </h4>
+            <div class="partners-list" id="partners-list"></div>
+            <button class="control-btn secondary" id="add-partner">
+              <i class="fas fa-plus"></i>
+              <span>Add Partner</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       <div class="stats-container">
@@ -222,6 +398,7 @@
       </div>
     </div>
 
+    <!-- Audio Elements -->
     <audio
       id="alarm-sound"
       src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3"
@@ -238,7 +415,103 @@
       preload="auto"
       loop
     ></audio>
+    <audio
+      id="rain-sound"
+      loop
+      src="audio/rain.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="forest-sound"
+      loop
+      src="audio/forest.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="coffee-sound"
+      loop
+      src="audio/cafe.mp3"
+      preload="auto"
+    ></audio>
+    <audio
+      id="waves-sound"
+      loop
+      src="audio/waves.mp3"
+      preload="auto"
+    ></audio>
 
-    <script type="module" src="script.js"></script>
+    <!-- Modals -->
+    <div class="modal" id="session-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Schedule Pomodoro Session</h3>
+
+        <div class="form-group">
+          <label>Time</label>
+          <input type="time" id="session-time" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label>Duration (minutes)</label>
+          <input
+            type="number"
+            id="session-duration"
+            class="form-input"
+            min="1"
+            max="120"
+            value="25"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Task (optional)</label>
+          <input
+            type="text"
+            id="session-task"
+            class="form-input"
+            placeholder="What will you work on?"
+          />
+        </div>
+
+        <button class="control-btn primary" id="save-session">
+          Save Session
+        </button>
+      </div>
+    </div>
+
+    <div class="modal" id="partner-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Add Accountability Partner</h3>
+
+        <div class="form-group">
+          <label>Name</label>
+          <input
+            type="text"
+            id="partner-name"
+            class="form-input"
+            placeholder="Partner's name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            id="partner-email"
+            class="form-input"
+            placeholder="partner@example.com"
+          />
+        </div>
+
+        <button class="control-btn primary" id="save-partner">
+          Add Partner
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
